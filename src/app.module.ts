@@ -4,6 +4,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
+import { PassengerModule } from './passenger/passenger.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { UserModule } from './user/user.module';
       useFindAndModify: false,
     }),
     UserModule,
+    PassengerModule,
   ],
   controllers: [AppController],
   providers: [AppService],
