@@ -1,4 +1,4 @@
-export interface IPassenger extends Document {
+export interface PassengerInterface extends Document {
     name: string;
     email: string;
 }
