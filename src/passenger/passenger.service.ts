@@ -1,36 +1,41 @@
 import { HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { IPassenger } from 'src/common/interfaces/passenger.interface';
+import { PassengerInterface } from 'src/common/interfaces/passenger.interface';
 import { Passenger } from 'src/common/models/models';
 import { PassengerDTO } from './dto/passenger.dto';
 
 @Injectable()
 export class PassengerService {
-    constructor(
-        @InjectModel(Passenger.name) private readonly model: 
-        Model<IPassenger>,
-    ) {}
-    
-    async create(passengerDTO: PassengerDTO):Promise<IPassenger> {
-        const newPassenger = new this.model(passengerDTO);
-        return await newPassenger.save(); 
-    }
+  constructor(
+    @InjectModel(Passenger.name)
+    private readonly model: Model<PassengerInterface>,
+  ) {}
 
-    async findAll(): Promise<IPassenger[]> {
-        return await this.model.find();
-    }
+  async create(passengerDTO: PassengerDTO): Promise<PassengerInterface> {
+    const newPassenger = new this.model(passengerDTO);
+    return await newPassenger.save();
+  }
 
-    async findOne(id: string): Promise<IPassenger> {
-        return await this.model.findById(id);
-    }
+  async findAll(): Promise<PassengerInterface[]> {
+    return await this.model.find();
+  }
 
-    async update(id: string, passengerDTO: PassengerDTO) {
-        return await this.model.findByIdAndUpdate(id, passengerDTO, { new: true });
-    }
+  async findOne(id: string): Promise<PassengerInterface> {
+    return await this.model.findById(id);
+  }
 
-    async delete(id: string) {
-        await this.model.findByIdAndDelete(id);
-        return { status: HttpStatus.OK, message: 'Deleted' }
-    }
+  async update(
+    id: string,
+    passengerDTO: PassengerDTO,
+  ): Promise<PassengerInterface> {
+    return await this.model.findByIdAndUpdate(id, passengerDTO, {
+      new: true,
+    });
+  }
+
+  async delete(id: string) {
+    await this.model.findByIdAndDelete(id);
+    return { status: HttpStatus.OK, message: 'Deleted' };
+  }
 }

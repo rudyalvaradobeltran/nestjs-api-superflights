@@ -11,14 +11,12 @@ import { FlightSchema } from './schema/flight.schema';
     MongooseModule.forFeatureAsync([
       {
         name: Flight.name,
-        useFactory: () => FlightSchema.plugin(
-          require('mongoose-autopopulate')
-        )
-      }
+        useFactory: () => FlightSchema.plugin(require('mongoose-autopopulate')),
+      },
     ]),
-    PassengerModule
+    PassengerModule,
   ],
   controllers: [FlightController],
-  providers: [FlightService]
+  providers: [FlightService],
 })
 export class FlightModule {}

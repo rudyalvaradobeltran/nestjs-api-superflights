@@ -10,11 +10,12 @@ import { PassengerSchema } from './schema/passenger.schema';
     MongooseModule.forFeatureAsync([
       {
         name: Passenger.name,
-        useFactory: () => PassengerSchema
-      }
-    ])
+        useFactory: () => PassengerSchema,
+      },
+    ]),
   ],
   providers: [PassengerService],
-  controllers: [PassengerController]
+  controllers: [PassengerController],
+  exports: [PassengerService]
 })
 export class PassengerModule {}
