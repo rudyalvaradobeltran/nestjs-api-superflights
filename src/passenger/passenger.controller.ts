@@ -16,7 +16,7 @@ import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 @ApiTags('passengers')
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard)
-@Controller('api/v1/passenger')
+@Controller('api/passenger')
 export class PassengerController {
   constructor(private readonly passengerService: PassengerService) {}
 

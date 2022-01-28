@@ -19,7 +19,7 @@ import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 @ApiTags('flights')
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard)
-@Controller('flight')
+@Controller('api/flight')
 export class FlightController {
   constructor(
     private readonly flightService: FlightService,
